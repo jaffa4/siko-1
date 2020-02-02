@@ -1,0 +1,15 @@
+module List where
+
+data List a = extern
+
+instance (Show a) => Show [a] where
+    show a = extern
+
+instance (PartialEq a) => PartialEq [a] where
+    opEq a b = extern
+
+iter a :: [a] -> Iterator a
+iter l = extern
+
+toList a :: Iterator a -> [a]
+toList i = extern

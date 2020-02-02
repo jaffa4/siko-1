@@ -1,0 +1,3 @@
+module Option where
+
+data Option a = Some a | None deriving (PartialEq, Eq, PartialOrd, Ord, Show)
