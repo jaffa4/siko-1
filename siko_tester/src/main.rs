@@ -39,11 +39,11 @@ fn process_dir(arg: String, inputs: &mut Vec<(PathBuf, String)>) -> bool {
 
 fn print_usage() {
     println!("Usage:");
-    println!("SikoTester SIKOC SIKO_STD COMP_DIR RUST_COMP_DIR SUCCESS_DIRFAIL_DIR");
+    println!("SikoTester SIKOC SIKO_STD COMP_DIR RUST_COMP_DIR SUCCESS_DIRFAIL_DIR PLATFORM");
 }
 
 fn process_args(args: Vec<String>) -> bool {
-    if args.len() != 6 {
+    if args.len() != 7 {
         print_usage();
         return false;
     }
@@ -53,6 +53,7 @@ fn process_args(args: Vec<String>) -> bool {
     let rust_comp_dir = args[3].clone();
     let success_dir = args[4].clone();
     let fail_dir = args[5].clone();
+    let platform = args[6].clone();
     let mut success_files = Vec::new();
     process_dir(success_dir, &mut success_files);
     let mut fail_files = Vec::new();
@@ -131,7 +132,7 @@ fn process_args(args: Vec<String>) -> bool {
             .arg(f.clone())
             .output()
             .expect("failed to execute process");
-        let output_filename = format!("{}/{}.output", f.display(), tc_name);
+        let output_filename = format!("{}/{}_{}.output", f.display(), tc_name,platform);
         fs::write(output_filename, output.stderr).expect("output file write failed");
         if !output.status.success() {
             success_count += 1;

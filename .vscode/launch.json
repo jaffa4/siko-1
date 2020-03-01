@@ -9,7 +9,7 @@
             "type": "cppvsdbg",
             "request": "launch",
             "program": "${workspaceFolder}/siko_tester/target/debug/siko_tester.exe",
-            "args": ["./siko", "./std", "./comp", "./rust_comp", "./tests/success/", "./tests/fail/"],
+            "args": ["${workspaceFolder}/siko.exe", "./std", "./comp", "./rust_comp", "./tests/success/", "./tests/fail/","win"],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
             "environment": [],
